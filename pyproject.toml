@@ -8,9 +8,12 @@ version = "0.1.0"
 description = "A client library for accessing Godot Asset Library"
 license = "MIT"
 authors = ["Florian Vazelle <florian.vazelle@vivaldi.net>"]
+packages = [
+    { include = "godot-asset-library-client" }
+]
+include = ["LICENSE.md", "godot-asset-library-client/py.typed"]
 readme = ["README.md"]
 repository = "https://github.com/MechanicalFlower/godot-asset-library-client"
-include = ["LICENSE.md", "godot_asset_library_client/py.typed"]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.13"
