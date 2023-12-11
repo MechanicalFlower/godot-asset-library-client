@@ -22,13 +22,13 @@ servers:
 tags:
   - name: assets
     description: Assets API
-  
+
   - name: assetsEdit
     description: Assets Edit API
 
   - name: configure
     description: Configuration API
-  
+
   - name: auth
     description: Authentication API
 
@@ -265,7 +265,7 @@ paths:
     post:
       tags: [assets]
       summary: Soft-delete an asset
-      description: Soft-delete an asset. Useable by moderators and the owner of the asset.
+      description: Soft-delete an asset. Usable by moderators and the owner of the asset.
 
       parameters:
         - name: id
@@ -431,7 +431,7 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/AuthToken"
-  
+
       responses:
         '200':
           description: Successful operation
@@ -601,7 +601,7 @@ components:
           type: string
       required:
         - token
-  
+
     RegisterSuccessfulResult:
       type: object
       properties:
@@ -609,7 +609,7 @@ components:
           type: boolean
         username:
           type: string
-  
+
     LoginSuccessfulResult:
       type: object
       properties:
@@ -621,7 +621,7 @@ components:
           type: string
         url:
           type: string
-  
+
     LogoutSuccessfulResult:
       type: object
       properties:
@@ -629,13 +629,13 @@ components:
           type: boolean
         token:
           type: string
-  
+
     ChangePwdSuccessfulResult:
       type: object
       properties:
         token:
           type: string
-  
+
     LoginForbiddenResult:
       allOf:
       - $ref: "#/components/schemas/Error"
@@ -643,19 +643,19 @@ components:
         properties:
           authenticated:
             type: boolean
-  
+
     LoginNotFoundResult:
       allOf:
       - $ref: "#/components/schemas/Error"
-  
+
     UsernamePassword:
       type: object
       properties:
         username:
           type: string
         password:
-          type: string       
-  
+          type: string
+
     UserDetails:
       allOf:
       - $ref: "#/components/schemas/UsernamePassword"
@@ -663,7 +663,7 @@ components:
         properties:
           email:
             type: string
-  
+
     ChangePassword:
       type: object
       properties:
@@ -673,13 +673,13 @@ components:
           type: string
         new_password:
           type: string
-  
+
     SuccessfulAssetOperation:
       type: object
       properties:
         changed:
           type: boolean
-  
+
     EditSummary:
       type: object
       properties:
@@ -691,7 +691,7 @@ components:
           type: string
         warning:
           type: string
-  
+
     EditDetails:
       allOf:
         - $ref: "#/components/schemas/EditSummary"
@@ -700,7 +700,7 @@ components:
           properties:
             original:
               $ref: "#/components/schemas/AssetDetails"
-  
+
     AssetSummary:
       type: object
       description: |
@@ -709,7 +709,7 @@ components:
       properties:
         token:
           type: string
-          description: The Token obtained thorugh a login.
+          description: The Token obtained through a login.
         asset_id:
           type: string
           description: The asset's unique identifier.
@@ -802,7 +802,7 @@ components:
           type: string
         previews:
           type: array
-          items: 
+          items:
             $ref: "#/components/schemas/AssetPreview"
 
     PaginatedAssetList:
@@ -933,7 +933,7 @@ components:
       properties:
         file:
           type: string
-        line: 
+        line:
           type: string
         function:
           type: string
@@ -990,7 +990,7 @@ components:
           type: image
           link: https://….png
           thumbnail: https://….png
-  
+
     PaginatedAssetListExample:
       value:
         result:

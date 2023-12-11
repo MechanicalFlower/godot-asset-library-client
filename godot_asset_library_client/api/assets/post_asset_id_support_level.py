@@ -5,24 +5,34 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.edit_details import EditDetails
+from ...models.post_asset_id_support_level_json_body import (
+    PostAssetIdSupportLevelJsonBody,
+)
+from ...models.successful_asset_operation import SuccessfulAssetOperation
 from ...types import Response
 
 
 def _get_kwargs(
     id: str,
+    *,
+    json_body: PostAssetIdSupportLevelJsonBody,
 ) -> Dict[str, Any]:
+    json_json_body = json_body.to_dict()
+
     return {
-        "method": "get",
-        "url": "/asset/edit/{id}".format(
+        "method": "post",
+        "url": "/asset/{id}/support_level".format(
             id=id,
         ),
+        "json": json_json_body,
     }
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[EditDetails]:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[SuccessfulAssetOperation]:
     if response.status_code == HTTPStatus.OK:
-        response_200 = EditDetails.from_dict(response.json())
+        response_200 = SuccessfulAssetOperation.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -31,7 +41,9 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[EditDetails]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[SuccessfulAssetOperation]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -44,25 +56,27 @@ def sync_detailed(
     id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[EditDetails]:
-    """Returns a previously-submitted asset edit
+    json_body: PostAssetIdSupportLevelJsonBody,
+) -> Response[SuccessfulAssetOperation]:
+    """Change the support level of an asset
 
-     Returns a previously-submitted asset edit. All fields with null are unchanged, and will stay the
-    same as in the original. The previews array is merged from the new and original previews.
+     API used by moderators to change the support level of an asset.
 
     Args:
         id (str):
+        json_body (PostAssetIdSupportLevelJsonBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[EditDetails]
+        Response[SuccessfulAssetOperation]
     """
 
     kwargs = _get_kwargs(
         id=id,
+        json_body=json_body,
     )
 
     response = client.get_httpx_client().request(
@@ -76,26 +90,28 @@ def sync(
     id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[EditDetails]:
-    """Returns a previously-submitted asset edit
+    json_body: PostAssetIdSupportLevelJsonBody,
+) -> Optional[SuccessfulAssetOperation]:
+    """Change the support level of an asset
 
-     Returns a previously-submitted asset edit. All fields with null are unchanged, and will stay the
-    same as in the original. The previews array is merged from the new and original previews.
+     API used by moderators to change the support level of an asset.
 
     Args:
         id (str):
+        json_body (PostAssetIdSupportLevelJsonBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        EditDetails
+        SuccessfulAssetOperation
     """
 
     return sync_detailed(
         id=id,
         client=client,
+        json_body=json_body,
     ).parsed
 
 
@@ -103,25 +119,27 @@ async def asyncio_detailed(
     id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[EditDetails]:
-    """Returns a previously-submitted asset edit
+    json_body: PostAssetIdSupportLevelJsonBody,
+) -> Response[SuccessfulAssetOperation]:
+    """Change the support level of an asset
 
-     Returns a previously-submitted asset edit. All fields with null are unchanged, and will stay the
-    same as in the original. The previews array is merged from the new and original previews.
+     API used by moderators to change the support level of an asset.
 
     Args:
         id (str):
+        json_body (PostAssetIdSupportLevelJsonBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[EditDetails]
+        Response[SuccessfulAssetOperation]
     """
 
     kwargs = _get_kwargs(
         id=id,
+        json_body=json_body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -133,26 +151,28 @@ async def asyncio(
     id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[EditDetails]:
-    """Returns a previously-submitted asset edit
+    json_body: PostAssetIdSupportLevelJsonBody,
+) -> Optional[SuccessfulAssetOperation]:
+    """Change the support level of an asset
 
-     Returns a previously-submitted asset edit. All fields with null are unchanged, and will stay the
-    same as in the original. The previews array is merged from the new and original previews.
+     API used by moderators to change the support level of an asset.
 
     Args:
         id (str):
+        json_body (PostAssetIdSupportLevelJsonBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        EditDetails
+        SuccessfulAssetOperation
     """
 
     return (
         await asyncio_detailed(
             id=id,
             client=client,
+            json_body=json_body,
         )
     ).parsed

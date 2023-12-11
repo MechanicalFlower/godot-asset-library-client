@@ -5,67 +5,73 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.asset_summary_download_provider import AssetSummaryDownloadProvider
+from ..models.asset_summary_download_provider import (
+    AssetSummaryDownloadProvider,
+)
 from ..models.asset_summary_support_level import AssetSummarySupportLevel
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.asset_details import AssetDetails
     from ..models.asset_preview import AssetPreview
 
 
-T = TypeVar("T", bound="AssetDetails")
+T = TypeVar("T", bound="EditDetails")
 
 
 @_attrs_define
-class AssetDetails:
-    """A resource provided by the asset library (add-on, project, ...).<br>
-    These properties are only returned when requesting a specific asset,
-    not a list of assets.
-
-        Attributes:
-            token (Union[Unset, str]): The Token obtained thorugh a login.
-            asset_id (Union[Unset, str]): The asset's unique identifier.
-            type (Union[Unset, str]): The asset's type, can be "addon" or "project".
-            author (Union[Unset, str]): The author's username.
-            author_id (Union[Unset, str]): The author's unique identifier.
-            category (Union[Unset, str]): The category the asset belongs to.
-            category_id (Union[Unset, str]): The unique identifier of the category the asset belongs to.
-            download_provider (Union[Unset, AssetSummaryDownloadProvider]): The download provider where the plugin source is
-                hosted.
-            download_commit (Union[Unset, str]):
-            download_hash (Union[Unset, str]): The asset's SHA-256 hash for the latest version. **Note:** This is currently
-                always an empty string as asset versions' hashes aren't computed and stored yet.
-                 Default: ''.
-            cost (Union[Unset, str]): The asset's license as a [SPDX license identifier](https://spdx.org/licenses/). For
-                compatibility reasons, this field is called `cost` instead of `license`.
-            godot_version (Union[Unset, str]): The Godot version the asset's latest version is intended for (in
-                `major.minor` format).<br> This field is present for compatibility reasons with the Godot editor. See also the
-                `versions` array.
-            icon_url (Union[Unset, str]): The asset's icon URL (should always be a PNG image).
-            is_archived (Union[Unset, bool]): If `true`, the asset is marked as archived by its author. When archived, it
-                can't receive any further reviews but can still be unarchived at any time by the author.
-            issues_url (Union[Unset, str]): The asset's issue reporting URL (typically associated with the Git repository
-                specified in `browse_url`).
-            modify_date (Union[Unset, datetime.datetime]): The date on which the asset entry was last updated. Note that
-                entries can be edited independently of new asset versions being released.
-            rating (Union[Unset, str]): The asset's rating (unused). For compatibility reasons, a value of 0 is always
-                returned. You most likely want `score` instead.
-            support_level (Union[Unset, AssetSummarySupportLevel]): The asset's support level.
-            title (Union[Unset, str]): The asset's title (usually less than 50 characters).
-            version (Union[Unset, str]): The asset revision string (starting from 1).<br> Every time the asset is edited
-                (for anyone and for any reason), this string is incremented by 1.
-            version_string (Union[Unset, str]): The version string of the latest version (free-form, but usually
-                `major.minor` or `major.minor.patch`).<br> This field is present for compatibility reasons with the Godot
-                editor. See also the `versions` array.
-            searchable (Union[Unset, str]):
-            previews (Union[Unset, List['AssetPreview']]):
-            browse_url (Union[Unset, str]): The asset's browsable repository URL.
-            description (Union[Unset, str]): The asset's full description.
-            download_url (Union[Unset, str]): The download link of the asset's latest version (should always point to a ZIP
-                archive).<br> This field is present for compatibility reasons with the Godot editor. See also the `versions`
-                array.
+class EditDetails:
+    """
+    Attributes:
+        edit_id (Union[Unset, str]):
+        status (Union[Unset, str]):
+        reason (Union[Unset, str]):
+        warning (Union[Unset, str]):
+        token (Union[Unset, str]): The Token obtained through a login.
+        asset_id (Union[Unset, str]): The asset's unique identifier.
+        type (Union[Unset, str]): The asset's type, can be "addon" or "project".
+        author (Union[Unset, str]): The author's username.
+        author_id (Union[Unset, str]): The author's unique identifier.
+        category (Union[Unset, str]): The category the asset belongs to.
+        category_id (Union[Unset, str]): The unique identifier of the category the asset belongs to.
+        download_provider (Union[Unset, AssetSummaryDownloadProvider]): The download provider where the plugin source is
+            hosted.
+        download_commit (Union[Unset, str]):
+        download_hash (Union[Unset, str]): The asset's SHA-256 hash for the latest version. **Note:** This is currently
+            always an empty string as asset versions' hashes aren't computed and stored yet.
+             Default: ''.
+        cost (Union[Unset, str]): The asset's license as a [SPDX license identifier](https://spdx.org/licenses/). For
+            compatibility reasons, this field is called `cost` instead of `license`.
+        godot_version (Union[Unset, str]): The Godot version the asset's latest version is intended for (in
+            `major.minor` format).<br> This field is present for compatibility reasons with the Godot editor. See also the
+            `versions` array.
+        icon_url (Union[Unset, str]): The asset's icon URL (should always be a PNG image).
+        is_archived (Union[Unset, bool]): If `true`, the asset is marked as archived by its author. When archived, it
+            can't receive any further reviews but can still be unarchived at any time by the author.
+        issues_url (Union[Unset, str]): The asset's issue reporting URL (typically associated with the Git repository
+            specified in `browse_url`).
+        modify_date (Union[Unset, datetime.datetime]): The date on which the asset entry was last updated. Note that
+            entries can be edited independently of new asset versions being released.
+        rating (Union[Unset, str]): The asset's rating (unused). For compatibility reasons, a value of 0 is always
+            returned. You most likely want `score` instead.
+        support_level (Union[Unset, AssetSummarySupportLevel]): The asset's support level.
+        title (Union[Unset, str]): The asset's title (usually less than 50 characters).
+        version (Union[Unset, str]): The asset revision string (starting from 1).<br> Every time the asset is edited
+            (for anyone and for any reason), this string is incremented by 1.
+        version_string (Union[Unset, str]): The version string of the latest version (free-form, but usually
+            `major.minor` or `major.minor.patch`).<br> This field is present for compatibility reasons with the Godot
+            editor. See also the `versions` array.
+        searchable (Union[Unset, str]):
+        previews (Union[Unset, List['AssetPreview']]):
+        original (Union[Unset, AssetDetails]): A resource provided by the asset library (add-on, project, ...).<br>
+            These properties are only returned when requesting a specific asset,
+            not a list of assets.
     """
 
+    edit_id: Union[Unset, str] = UNSET
+    status: Union[Unset, str] = UNSET
+    reason: Union[Unset, str] = UNSET
+    warning: Union[Unset, str] = UNSET
     token: Union[Unset, str] = UNSET
     asset_id: Union[Unset, str] = UNSET
     type: Union[Unset, str] = UNSET
@@ -89,12 +95,14 @@ class AssetDetails:
     version_string: Union[Unset, str] = UNSET
     searchable: Union[Unset, str] = UNSET
     previews: Union[Unset, List["AssetPreview"]] = UNSET
-    browse_url: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
-    download_url: Union[Unset, str] = UNSET
+    original: Union[Unset, "AssetDetails"] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
+        edit_id = self.edit_id
+        status = self.status
+        reason = self.reason
+        warning = self.warning
         token = self.token
         asset_id = self.asset_id
         type = self.type
@@ -134,13 +142,21 @@ class AssetDetails:
 
                 previews.append(previews_item)
 
-        browse_url = self.browse_url
-        description = self.description
-        download_url = self.download_url
+        original: Union[Unset, Dict[str, Any]] = UNSET
+        if not isinstance(self.original, Unset):
+            original = self.original.to_dict()
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if edit_id is not UNSET:
+            field_dict["edit_id"] = edit_id
+        if status is not UNSET:
+            field_dict["status"] = status
+        if reason is not UNSET:
+            field_dict["reason"] = reason
+        if warning is not UNSET:
+            field_dict["warning"] = warning
         if token is not UNSET:
             field_dict["token"] = token
         if asset_id is not UNSET:
@@ -187,20 +203,25 @@ class AssetDetails:
             field_dict["searchable"] = searchable
         if previews is not UNSET:
             field_dict["previews"] = previews
-        if browse_url is not UNSET:
-            field_dict["browse_url"] = browse_url
-        if description is not UNSET:
-            field_dict["description"] = description
-        if download_url is not UNSET:
-            field_dict["download_url"] = download_url
+        if original is not UNSET:
+            field_dict["original"] = original
 
         return field_dict
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.asset_details import AssetDetails
         from ..models.asset_preview import AssetPreview
 
         d = src_dict.copy()
+        edit_id = d.pop("edit_id", UNSET)
+
+        status = d.pop("status", UNSET)
+
+        reason = d.pop("reason", UNSET)
+
+        warning = d.pop("warning", UNSET)
+
         token = d.pop("token", UNSET)
 
         asset_id = d.pop("asset_id", UNSET)
@@ -267,13 +288,18 @@ class AssetDetails:
 
             previews.append(previews_item)
 
-        browse_url = d.pop("browse_url", UNSET)
+        _original = d.pop("original", UNSET)
+        original: Union[Unset, AssetDetails]
+        if isinstance(_original, Unset):
+            original = UNSET
+        else:
+            original = AssetDetails.from_dict(_original)
 
-        description = d.pop("description", UNSET)
-
-        download_url = d.pop("download_url", UNSET)
-
-        asset_details = cls(
+        edit_details = cls(
+            edit_id=edit_id,
+            status=status,
+            reason=reason,
+            warning=warning,
             token=token,
             asset_id=asset_id,
             type=type,
@@ -297,13 +323,11 @@ class AssetDetails:
             version_string=version_string,
             searchable=searchable,
             previews=previews,
-            browse_url=browse_url,
-            description=description,
-            download_url=download_url,
+            original=original,
         )
 
-        asset_details.additional_properties = d
-        return asset_details
+        edit_details.additional_properties = d
+        return edit_details
 
     @property
     def additional_keys(self) -> List[str]:

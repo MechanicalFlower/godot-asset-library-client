@@ -5,21 +5,23 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.post_asset_id_support_level_json_body import PostAssetIdSupportLevelJsonBody
-from ...models.successful_asset_operation import SuccessfulAssetOperation
+from ...models.edit_summary import EditSummary
+from ...models.post_asset_edit_id_reject_json_body import (
+    PostAssetEditIdRejectJsonBody,
+)
 from ...types import Response
 
 
 def _get_kwargs(
     id: str,
     *,
-    json_body: PostAssetIdSupportLevelJsonBody,
+    json_body: PostAssetEditIdRejectJsonBody,
 ) -> Dict[str, Any]:
     json_json_body = json_body.to_dict()
 
     return {
         "method": "post",
-        "url": "/asset/{id}/support_level".format(
+        "url": "/asset/edit/{id}/reject".format(
             id=id,
         ),
         "json": json_json_body,
@@ -28,9 +30,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SuccessfulAssetOperation]:
+) -> Optional[EditSummary]:
     if response.status_code == HTTPStatus.OK:
-        response_200 = SuccessfulAssetOperation.from_dict(response.json())
+        response_200 = EditSummary.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -41,7 +43,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SuccessfulAssetOperation]:
+) -> Response[EditSummary]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,22 +56,22 @@ def sync_detailed(
     id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    json_body: PostAssetIdSupportLevelJsonBody,
-) -> Response[SuccessfulAssetOperation]:
-    """Change the support level of an asset
+    json_body: PostAssetEditIdRejectJsonBody,
+) -> Response[EditSummary]:
+    """Reject an edit previously put in review
 
-     API used by moderators to change the support level of an asset.
+     Moderator-only. Reject an edit previously put in review.
 
     Args:
         id (str):
-        json_body (PostAssetIdSupportLevelJsonBody):
+        json_body (PostAssetEditIdRejectJsonBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SuccessfulAssetOperation]
+        Response[EditSummary]
     """
 
     kwargs = _get_kwargs(
@@ -88,22 +90,22 @@ def sync(
     id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    json_body: PostAssetIdSupportLevelJsonBody,
-) -> Optional[SuccessfulAssetOperation]:
-    """Change the support level of an asset
+    json_body: PostAssetEditIdRejectJsonBody,
+) -> Optional[EditSummary]:
+    """Reject an edit previously put in review
 
-     API used by moderators to change the support level of an asset.
+     Moderator-only. Reject an edit previously put in review.
 
     Args:
         id (str):
-        json_body (PostAssetIdSupportLevelJsonBody):
+        json_body (PostAssetEditIdRejectJsonBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SuccessfulAssetOperation
+        EditSummary
     """
 
     return sync_detailed(
@@ -117,22 +119,22 @@ async def asyncio_detailed(
     id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    json_body: PostAssetIdSupportLevelJsonBody,
-) -> Response[SuccessfulAssetOperation]:
-    """Change the support level of an asset
+    json_body: PostAssetEditIdRejectJsonBody,
+) -> Response[EditSummary]:
+    """Reject an edit previously put in review
 
-     API used by moderators to change the support level of an asset.
+     Moderator-only. Reject an edit previously put in review.
 
     Args:
         id (str):
-        json_body (PostAssetIdSupportLevelJsonBody):
+        json_body (PostAssetEditIdRejectJsonBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SuccessfulAssetOperation]
+        Response[EditSummary]
     """
 
     kwargs = _get_kwargs(
@@ -149,22 +151,22 @@ async def asyncio(
     id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    json_body: PostAssetIdSupportLevelJsonBody,
-) -> Optional[SuccessfulAssetOperation]:
-    """Change the support level of an asset
+    json_body: PostAssetEditIdRejectJsonBody,
+) -> Optional[EditSummary]:
+    """Reject an edit previously put in review
 
-     API used by moderators to change the support level of an asset.
+     Moderator-only. Reject an edit previously put in review.
 
     Args:
         id (str):
-        json_body (PostAssetIdSupportLevelJsonBody):
+        json_body (PostAssetEditIdRejectJsonBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SuccessfulAssetOperation
+        EditSummary
     """
 
     return (

@@ -5,7 +5,9 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.asset_summary_download_provider import AssetSummaryDownloadProvider
+from ..models.asset_summary_download_provider import (
+    AssetSummaryDownloadProvider,
+)
 from ..models.asset_summary_support_level import AssetSummarySupportLevel
 from ..types import UNSET, Unset
 
@@ -22,7 +24,7 @@ class AssetSummary:
     These properties are returned both when requesting a list of assets or a specific asset.
 
         Attributes:
-            token (Union[Unset, str]): The Token obtained thorugh a login.
+            token (Union[Unset, str]): The Token obtained through a login.
             asset_id (Union[Unset, str]): The asset's unique identifier.
             type (Union[Unset, str]): The asset's type, can be "addon" or "project".
             author (Union[Unset, str]): The author's username.

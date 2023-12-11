@@ -6,7 +6,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.auth_token import AuthToken
-from ...models.successful_asset_operation import SuccessfulAssetOperation
+from ...models.edit_summary import EditSummary
 from ...types import Response
 
 
@@ -19,7 +19,7 @@ def _get_kwargs(
 
     return {
         "method": "post",
-        "url": "/asset/{id}/delete".format(
+        "url": "/asset/edit/{id}/accept".format(
             id=id,
         ),
         "json": json_json_body,
@@ -28,9 +28,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SuccessfulAssetOperation]:
+) -> Optional[EditSummary]:
     if response.status_code == HTTPStatus.OK:
-        response_200 = SuccessfulAssetOperation.from_dict(response.json())
+        response_200 = EditSummary.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -41,7 +41,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SuccessfulAssetOperation]:
+) -> Response[EditSummary]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,10 +55,10 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     json_body: AuthToken,
-) -> Response[SuccessfulAssetOperation]:
-    """Soft-delete an asset
+) -> Response[EditSummary]:
+    """Apply an edit previously put in review
 
-     Soft-delete an asset. Useable by moderators and the owner of the asset.
+     Moderator-only. Apply an edit previously put in review.
 
     Args:
         id (str):
@@ -69,7 +69,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SuccessfulAssetOperation]
+        Response[EditSummary]
     """
 
     kwargs = _get_kwargs(
@@ -89,10 +89,10 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     json_body: AuthToken,
-) -> Optional[SuccessfulAssetOperation]:
-    """Soft-delete an asset
+) -> Optional[EditSummary]:
+    """Apply an edit previously put in review
 
-     Soft-delete an asset. Useable by moderators and the owner of the asset.
+     Moderator-only. Apply an edit previously put in review.
 
     Args:
         id (str):
@@ -103,7 +103,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SuccessfulAssetOperation
+        EditSummary
     """
 
     return sync_detailed(
@@ -118,10 +118,10 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     json_body: AuthToken,
-) -> Response[SuccessfulAssetOperation]:
-    """Soft-delete an asset
+) -> Response[EditSummary]:
+    """Apply an edit previously put in review
 
-     Soft-delete an asset. Useable by moderators and the owner of the asset.
+     Moderator-only. Apply an edit previously put in review.
 
     Args:
         id (str):
@@ -132,7 +132,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SuccessfulAssetOperation]
+        Response[EditSummary]
     """
 
     kwargs = _get_kwargs(
@@ -150,10 +150,10 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     json_body: AuthToken,
-) -> Optional[SuccessfulAssetOperation]:
-    """Soft-delete an asset
+) -> Optional[EditSummary]:
+    """Apply an edit previously put in review
 
-     Soft-delete an asset. Useable by moderators and the owner of the asset.
+     Moderator-only. Apply an edit previously put in review.
 
     Args:
         id (str):
@@ -164,7 +164,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SuccessfulAssetOperation
+        EditSummary
     """
 
     return (

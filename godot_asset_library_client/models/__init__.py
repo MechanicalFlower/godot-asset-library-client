@@ -25,7 +25,9 @@ from .pagination_result import PaginationResult
 from .post_asset_edit_id_reject_json_body import PostAssetEditIdRejectJsonBody
 from .post_asset_edit_id_response_200 import PostAssetEditIdResponse200
 from .post_asset_id_response_200 import PostAssetIdResponse200
-from .post_asset_id_support_level_json_body import PostAssetIdSupportLevelJsonBody
+from .post_asset_id_support_level_json_body import (
+    PostAssetIdSupportLevelJsonBody,
+)
 from .post_asset_response_200 import PostAssetResponse200
 from .register_successful_result import RegisterSuccessfulResult
 from .successful_asset_operation import SuccessfulAssetOperation

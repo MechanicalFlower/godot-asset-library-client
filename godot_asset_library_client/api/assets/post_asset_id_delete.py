@@ -6,7 +6,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.auth_token import AuthToken
-from ...models.edit_summary import EditSummary
+from ...models.successful_asset_operation import SuccessfulAssetOperation
 from ...types import Response
 
 
@@ -19,16 +19,18 @@ def _get_kwargs(
 
     return {
         "method": "post",
-        "url": "/asset/edit/{id}/accept".format(
+        "url": "/asset/{id}/delete".format(
             id=id,
         ),
         "json": json_json_body,
     }
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[EditSummary]:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[SuccessfulAssetOperation]:
     if response.status_code == HTTPStatus.OK:
-        response_200 = EditSummary.from_dict(response.json())
+        response_200 = SuccessfulAssetOperation.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -37,7 +39,9 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[EditSummary]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[SuccessfulAssetOperation]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -51,10 +55,10 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     json_body: AuthToken,
-) -> Response[EditSummary]:
-    """Apply an edit previously put in review
+) -> Response[SuccessfulAssetOperation]:
+    """Soft-delete an asset
 
-     Moderator-only. Apply an edit previously put in review.
+     Soft-delete an asset. Usable by moderators and the owner of the asset.
 
     Args:
         id (str):
@@ -65,7 +69,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[EditSummary]
+        Response[SuccessfulAssetOperation]
     """
 
     kwargs = _get_kwargs(
@@ -85,10 +89,10 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     json_body: AuthToken,
-) -> Optional[EditSummary]:
-    """Apply an edit previously put in review
+) -> Optional[SuccessfulAssetOperation]:
+    """Soft-delete an asset
 
-     Moderator-only. Apply an edit previously put in review.
+     Soft-delete an asset. Usable by moderators and the owner of the asset.
 
     Args:
         id (str):
@@ -99,7 +103,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        EditSummary
+        SuccessfulAssetOperation
     """
 
     return sync_detailed(
@@ -114,10 +118,10 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     json_body: AuthToken,
-) -> Response[EditSummary]:
-    """Apply an edit previously put in review
+) -> Response[SuccessfulAssetOperation]:
+    """Soft-delete an asset
 
-     Moderator-only. Apply an edit previously put in review.
+     Soft-delete an asset. Usable by moderators and the owner of the asset.
 
     Args:
         id (str):
@@ -128,7 +132,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[EditSummary]
+        Response[SuccessfulAssetOperation]
     """
 
     kwargs = _get_kwargs(
@@ -146,10 +150,10 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     json_body: AuthToken,
-) -> Optional[EditSummary]:
-    """Apply an edit previously put in review
+) -> Optional[SuccessfulAssetOperation]:
+    """Soft-delete an asset
 
-     Moderator-only. Apply an edit previously put in review.
+     Soft-delete an asset. Usable by moderators and the owner of the asset.
 
     Args:
         id (str):
@@ -160,7 +164,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        EditSummary
+        SuccessfulAssetOperation
     """
 
     return (

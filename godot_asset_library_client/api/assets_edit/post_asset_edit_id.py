@@ -6,7 +6,9 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.asset_details import AssetDetails
-from ...models.post_asset_edit_id_response_200 import PostAssetEditIdResponse200
+from ...models.post_asset_edit_id_response_200 import (
+    PostAssetEditIdResponse200,
+)
 from ...types import Response
 
 
