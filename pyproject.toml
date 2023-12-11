@@ -3,27 +3,31 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "greeter"
+name = "godot-asset-library-client"
 version = "0.1.0"
-description = "Python template"
+description = "A client library for accessing Godot Asset Library"
 license = "MIT"
 authors = ["Florian Vazelle <florian.vazelle@vivaldi.net>"]
 readme = ["README.md"]
-repository = "https://github.com/MechanicalFlower/python-template"
-include = ["LICENSE.md"]
+repository = "https://github.com/MechanicalFlower/godot-asset-library-client"
+include = ["LICENSE.md", "godot_asset_library_client/py.typed"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.9,<3.13"
+httpx = ">=0.20.0,<0.26.0"
+attrs = ">=21.3.0"
+python-dateutil = "^2.8.0"
 
 [tool.poetry.scripts]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.2"
 pre-commit = "^3.6.0"
+openapi-python-client = "^0.16.0"
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://github.com/MechanicalFlower/python-template/issues"
-"Changelog" = "https://github.com/MechanicalFlower/python-template/blob/main/CHANGELOG.md"
+"Bug Tracker" = "https://github.com/MechanicalFlower/godot-asset-library-client/issues"
+"Changelog" = "https://github.com/MechanicalFlower/godot-asset-library-client/blob/main/CHANGELOG.md"
 
 [tool.black]
 target-version = ["py310"]
@@ -33,6 +37,7 @@ multi_line_output = 3
 include_trailing_comma = true
 
 [tool.ruff]
+select = ["F", "I"]
 line-length = 88
 
 [tool.mypy]
