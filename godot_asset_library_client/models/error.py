@@ -33,10 +33,9 @@ class Error:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        error = d.pop("error", UNSET)
 
         error = cls(
-            error=error,
+            error=d.pop("error", UNSET),
         )
 
         error.additional_properties = d
