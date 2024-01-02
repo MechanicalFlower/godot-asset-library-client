@@ -173,13 +173,13 @@ trio = ["trio (>=0.22.0,<0.23.0)"]
 
 [[package]]
 name = "httpx"
-version = "0.25.2"
+version = "0.26.0"
 description = "The next generation HTTP client."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "httpx-0.25.2-py3-none-any.whl", hash = "sha256:a05d3d052d9b2dfce0e3896636467f8a5342fb2b902c819428e1ac65413ca118"},
-    {file = "httpx-0.25.2.tar.gz", hash = "sha256:8b8fcaa0c8ea7b05edd69a094e63a2094c4efcb48129fb757361bc423c0ad9e8"},
+    {file = "httpx-0.26.0-py3-none-any.whl", hash = "sha256:8915f5a3627c4d47b73e8202457cb28f1266982d1159bd5779d86a80c0eab1cd"},
+    {file = "httpx-0.26.0.tar.gz", hash = "sha256:451b55c30d5185ea6b23c2c793abf9bb237d2a7dfb901ced6ff69ad37ec1dfaf"},
 ]
 
 [package.dependencies]
@@ -333,19 +333,19 @@ setuptools = "*"
 
 [[package]]
 name = "openapi-python-client"
-version = "0.16.0"
+version = "0.16.1"
 description = "Generate modern Python clients from OpenAPI"
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "openapi_python_client-0.16.0-py3-none-any.whl", hash = "sha256:2250a718703f99d6e55ff1b6b0bb7bb37f8d6424343d0f86a03d420869860578"},
-    {file = "openapi_python_client-0.16.0.tar.gz", hash = "sha256:c1b76d97d1276462445cded66b8e0c9095fa11002f695e5dcc212b45b8bfee9c"},
+    {file = "openapi_python_client-0.16.1-py3-none-any.whl", hash = "sha256:61d2601df3abb1723919444434ade016e4512438846623758e79c1c1ea3ee8e6"},
+    {file = "openapi_python_client-0.16.1.tar.gz", hash = "sha256:bb5803a10a27a00158daf1c23311facc02fd68471c91631165dce8f2f3161607"},
 ]
 
 [package.dependencies]
 attrs = ">=21.3.0"
 colorama = {version = ">=0.4.3,<0.5.0", markers = "sys_platform == \"win32\""}
-httpx = ">=0.20.0,<0.26.0"
+httpx = ">=0.20.0,<0.27.0"
 jinja2 = ">=3.0.0,<4.0.0"
 pydantic = ">=2.1.1,<3.0.0"
 python-dateutil = ">=2.8.1,<3.0.0"
@@ -786,4 +786,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "d218f0105bb4bf1396228855d0cae28a75a776f2a01a96a1502260ab9a02a2a4"
+content-hash = "2f5a0712e3089717c3818a66427a91dc37c216de812d917e8119e71eecdf0bfc"
