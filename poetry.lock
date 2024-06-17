@@ -333,13 +333,13 @@ setuptools = "*"
 
 [[package]]
 name = "openapi-python-client"
-version = "0.20.0"
+version = "0.21.1"
 description = "Generate modern Python clients from OpenAPI"
 optional = false
-python-versions = "<4.0,>=3.8"
+python-versions = "<4.0,>=3.8.1"
 files = [
-    {file = "openapi_python_client-0.20.0-py3-none-any.whl", hash = "sha256:e756d11541bfbe387554d151e69438ca65acc8155aee53bc762483d93327037c"},
-    {file = "openapi_python_client-0.20.0.tar.gz", hash = "sha256:cd896cb2fd1a25fa626cf5b395781a7cf34a451caab99841defe283344babae6"},
+    {file = "openapi_python_client-0.21.1-py3-none-any.whl", hash = "sha256:6de88ea0975404ac441f8d0f1aa080b31d09c4b1eb5db169b1d94d14d814f85d"},
+    {file = "openapi_python_client-0.21.1.tar.gz", hash = "sha256:317324691b2e3365978bb3a02aa2eb0b3c951419dde0cfaa2f4944d9c01f5054"},
 ]
 
 [package.dependencies]
@@ -864,4 +864,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "91fcc932e24e80fca2a25aca51e8a25a037c7e2753bec260a29de906a76ccd93"
+content-hash = "86664ccfc87a13bf5936a003afb1a1656c408bb4a8c2d2c60f5d098a0eef140f"
