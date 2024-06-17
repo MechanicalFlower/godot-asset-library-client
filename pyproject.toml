@@ -23,7 +23,7 @@ python-dateutil = "^2.9.0"
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"
 pre-commit = "^3.7.1"
-openapi-python-client = "^0.20.0"
+openapi-python-client = "^0.21.1"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/MechanicalFlower/godot-asset-library-client/issues"
