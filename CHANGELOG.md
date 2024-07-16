@@ -9,7 +9,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Fixed
 ### Security
 ### Dependencies
-- Bump `sigstore/gh-action-sigstore-python` from 2.1.0 to 2.1.1 ([#1](https://github.com/MechanicalFlower/godot-asset-library-client/pull/1))
+- Bump `sigstore/gh-action-sigstore-python` from 2.1.0 to 3.0.0 ([#1](https://github.com/MechanicalFlower/godot-asset-library-client/pull/1), [#38](https://github.com/MechanicalFlower/godot-asset-library-client/pull/38))
 - Bump `actions/download-artifact` from 3 to 4 ([#3](https://github.com/MechanicalFlower/godot-asset-library-client/pull/3))
 - Bump `actions/upload-artifact` from 3 to 4 ([#2](https://github.com/MechanicalFlower/godot-asset-library-client/pull/2))
 - Bump `pytest` from 7.4.3 to 8.2.2 ([#8](https://github.com/MechanicalFlower/godot-asset-library-client/pull/8), [#11](https://github.com/MechanicalFlower/godot-asset-library-client/pull/11), [#13](https://github.com/MechanicalFlower/godot-asset-library-client/pull/13), [#17](https://github.com/MechanicalFlower/godot-asset-library-client/pull/17), [#20](https://github.com/MechanicalFlower/godot-asset-library-client/pull/20), [#23](https://github.com/MechanicalFlower/godot-asset-library-client/pull/23), [#26](https://github.com/MechanicalFlower/godot-asset-library-client/pull/26), [#29](https://github.com/MechanicalFlower/godot-asset-library-client/pull/29), [#32](https://github.com/MechanicalFlower/godot-asset-library-client/pull/32))
