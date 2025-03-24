@@ -1,4 +1,4 @@
-""" Contains all the data models used in inputs/outputs """
+"""Contains all the data models used in inputs/outputs"""
 
 from .asset_details import AssetDetails
 from .asset_preview import AssetPreview

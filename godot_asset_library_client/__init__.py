@@ -1,4 +1,4 @@
-""" A client library for accessing Godot Asset Library """
+"""A client library for accessing Godot Asset Library"""
 
 from .client import AuthenticatedClient, Client
 
